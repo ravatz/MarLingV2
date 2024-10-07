@@ -68,7 +68,8 @@ deb https://buaya.klas.or.id/ubuntu/ focal-proposed main restricted universe mul
 # Mendapatkan informasi kode negara dan OS
 COUNTRY_CODE=$(curl -s https://ipinfo.io/country)
 OS=$(lsb_release -si)
-
+REPO=https://raw.githubusercontent.com/ravatz/MarLingV2/refs/heads/main
+TOKEN=GHSAT0AAAAAACV36LMXNEJQ7YLYGI72J5QEZYD3ZDA
 # Pemeriksaan IP Indonesia
 if [[ "$COUNTRY_CODE" == "ID" ]]; then
     colorized_echo green "IP Indonesia terdeteksi, menggunakan repositories lokal Indonesia"
@@ -195,15 +196,15 @@ timedatectl set-timezone Asia/Jakarta;
 sudo bash -c "$(curl -sL https://github.com/ravatz/Marzban-scripts/raw/master/marzban.sh)" @ install
 
 #Install Subs
-wget -N -P /var/lib/marzban/templates/subscription/  https://raw.githubusercontent.com/ravatz/MarLingV2/main/index.html
+wget -N -P /var/lib/marzban/templates/subscription/  $REPO/index.html?token=$TOKEN
 
 #install env
-wget -O /opt/marzban/.env "https://raw.githubusercontent.com/ravatz/MarLingV2/main/env"
+wget -O /opt/marzban/.env "$REPO/env?token=$TOKEN"
 
 #install backup db
-wget -O /usr/bin/send "https://raw.githubusercontent.com/ravatz/MarLingV2/main/send"
+wget -O /usr/bin/send "$REPO/send?token=$TOKEN"
 chmod +x /usr/bin/send
-wget -O /usr/bin/send_dbvnstat "https://raw.githubusercontent.com/ravatz/MarLingV2/main/send_dbvnstat"
+wget -O /usr/bin/send_dbvnstat "$REPO/send_dbvnstat?token=$TOKEN"
 chmod +x /usr/bin/send_dbvnstat
 
 crontab -l > mycron
@@ -221,20 +222,20 @@ cd
 
 #profile
 echo -e 'profile' >> /root/.profile
-wget -O /usr/bin/profile "https://raw.githubusercontent.com/ravatz/MarLingV2/main/profile";
+wget -O /usr/bin/profile "$REPO/profile?token=$TOKEN";
 chmod +x /usr/bin/profile
 apt install neofetch -y
-wget -O /usr/bin/cekservice "https://raw.githubusercontent.com/ravatz/MarLingV2/main/cekservice.sh"
+wget -O /usr/bin/cekservice "$REPO/cekservice.sh?token=$TOKEN"
 chmod +x /usr/bin/cekservice
 
 #install compose
-wget -O /opt/marzban/docker-compose.yml "https://raw.githubusercontent.com/ravatz/MarLingV2/main/docker-compose.yml"
+wget -O /opt/marzban/docker-compose.yml "$REPO/docker-compose.yml?token=$TOKEN"
 
 #Install VNSTAT
 apt -y install vnstat
 /etc/init.d/vnstat restart
 apt -y install libsqlite3-dev
-wget https://github.com/ravatz/MarLingV2/raw/main/vnstat-2.6.tar.gz
+wget $REPO/vnstat-2.6.tar.gz?token=$TOKEN
 tar zxvf vnstat-2.6.tar.gz
 cd vnstat-2.6
 ./configure --prefix=/usr --sysconfdir=/etc && make && make install 
@@ -253,9 +254,9 @@ sudo apt-get install speedtest -y
 mkdir -p /var/log/nginx
 touch /var/log/nginx/access.log
 touch /var/log/nginx/error.log
-wget -O /opt/marzban/nginx.conf "https://raw.githubusercontent.com/ravatz/MarLingV2/main/nginx.conf"
-wget -O /opt/marzban/default.conf "https://raw.githubusercontent.com/ravatz/MarLingV2/main/vps.conf"
-wget -O /opt/marzban/xray.conf "https://raw.githubusercontent.com/ravatz/MarLingV2/main/xray.conf"
+wget -O /opt/marzban/nginx.conf "$REPO/nginx.conf?token=$TOKEN"
+wget -O /opt/marzban/default.conf "$REPO/vps.conf?token=$TOKEN"
+wget -O /opt/marzban/xray.conf "$REPO/xray.conf?token=$TOKEN"
 mkdir -p /var/www/html
 echo "<pre>This is test web</pre>" > /var/www/html/index.html
 
@@ -268,7 +269,7 @@ apt install socat cron bash-completion -y
 curl https://get.acme.sh | sh -s email=$email
 /root/.acme.sh/acme.sh --server letsencrypt --register-account -m $email --issue -d $domain --standalone -k ec-256 --debug
 ~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /var/lib/marzban/xray.crt --keypath /var/lib/marzban/xray.key --ecc
-wget -O /var/lib/marzban/xray_config.json "https://raw.githubusercontent.com/ravatz/MarLingV2/main/xray_config.json"
+wget -O /var/lib/marzban/xray_config.json "$REPO/xray_config.json"
 
 #install firewall
 apt install ufw -y
@@ -284,9 +285,9 @@ sudo ufw allow $port/tcp
 yes | sudo ufw enable
 
 #install database
-wget -O /var/lib/marzban/db.sqlite3 "https://github.com/ravatz/MarLingV2/raw/main/db.sqlite3"
+wget -O /var/lib/marzban/db.sqlite3 "$REPO/db.sqlite3?token=$TOKEN"
 rm /var/lib/vnstat/vnstat.db
-wget -O /var/lib/vnstat/vnstat.db "https://github.com/ravatz/MarLingV2/raw/main/vnstat.db"
+wget -O /var/lib/vnstat/vnstat.db "$REPO/vnstat.db?token=$TOKEN"
 
 #install WARP Proxy
 # wget -O /root/warp "https://raw.githubusercontent.com/hamid-gh98/x-ui-scripts/main/install_warp_proxy.sh"
