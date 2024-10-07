@@ -257,7 +257,7 @@ wget -O /opt/marzban/nginx.conf "https://raw.githubusercontent.com/ravatz/MarLin
 wget -O /opt/marzban/default.conf "https://raw.githubusercontent.com/ravatz/MarLingV2/main/vps.conf"
 wget -O /opt/marzban/xray.conf "https://raw.githubusercontent.com/ravatz/MarLingV2/main/xray.conf"
 mkdir -p /var/www/html
-echo "<pre>Setup by AutoScript LingVPN</pre>" > /var/www/html/index.html
+echo "<pre>This is test web</pre>" > /var/www/html/index.html
 
 #install socat
 apt install iptables -y
@@ -307,17 +307,17 @@ sed -i "s/SUDO_PASSWORD = \"${passpanel}\"/# SUDO_PASSWORD = \"admin\"/" /opt/ma
 docker compose down && docker compose up -d
 cd
 profile
-echo "Untuk data login dashboard Marzban: " | tee -a log-install.txt
-echo "-=================================-" | tee -a log-install.txt
-echo "URL HTTPS : https://${domain}:${port}/dashboard" | tee -a log-install.txt
-echo "URL HTTP  : http://${domain}:${port}/dashboard" | tee -a log-install.txt
-echo "username  : ${userpanel}" | tee -a log-install.txt
-echo "password  : ${passpanel}" | tee -a log-install.txt
-echo "-=================================-" | tee -a log-install.txt
-echo "Jangan lupa join Channel & Grup Telegram saya juga di" | tee -a log-install.txt
-echo "Telegram Channel: https://t.me/LingVPN" | tee -a log-install.txt
-echo "Telegram Group: https://t.me/LingVPN_Group" | tee -a log-install.txt
-echo "-=================================-" | tee -a log-install.txt
+# echo "Untuk data login dashboard Marzban: " | tee -a log-install.txt
+# echo "-=================================-" | tee -a log-install.txt
+# echo "URL HTTPS : https://${domain}:${port}/dashboard" | tee -a log-install.txt
+# echo "URL HTTP  : http://${domain}:${port}/dashboard" | tee -a log-install.txt
+# echo "username  : ${userpanel}" | tee -a log-install.txt
+# echo "password  : ${passpanel}" | tee -a log-install.txt
+# echo "-=================================-" | tee -a log-install.txt
+# echo "Jangan lupa join Channel & Grup Telegram saya juga di" | tee -a log-install.txt
+# echo "Telegram Channel: https://t.me/LingVPN" | tee -a log-install.txt
+# echo "Telegram Group: https://t.me/LingVPN_Group" | tee -a log-install.txt
+# echo "-=================================-" | tee -a log-install.txt
 colorized_echo green "Script telah berhasil di install"
 rm /root/mar.sh
 colorized_echo blue "Menghapus admin bawaan db.sqlite"
