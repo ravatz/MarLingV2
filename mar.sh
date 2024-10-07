@@ -289,9 +289,9 @@ rm /var/lib/vnstat/vnstat.db
 wget -O /var/lib/vnstat/vnstat.db "https://github.com/ravatz/MarLingV2/raw/main/vnstat.db"
 
 #install WARP Proxy
-wget -O /root/warp "https://raw.githubusercontent.com/hamid-gh98/x-ui-scripts/main/install_warp_proxy.sh"
-sudo chmod +x /root/warp
-sudo bash /root/warp -y 
+# wget -O /root/warp "https://raw.githubusercontent.com/hamid-gh98/x-ui-scripts/main/install_warp_proxy.sh"
+# sudo chmod +x /root/warp
+# sudo bash /root/warp -y 
 
 #finishing
 apt autoremove -y
