@@ -13,3 +13,4 @@ CAPTION="*Backup Database Vnstat RavaVPN*  /var/lib/vnstat/vnstat.db"
 
 # Menggunakan multipart/form-data untuk mengirim file
 curl -F document=@"$FILE_PATH" -F caption="$CAPTION" -F parse_mode="Markdown" "https://api.telegram.org/bot$TOKEN/sendDocument" -F chat_id="$CHAT_ID_TUJUAN"
+

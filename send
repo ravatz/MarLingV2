@@ -7,9 +7,9 @@ TOKEN="6159420338:AAFYFkZ8g79vp0GQTTbgbvnsvIQC2MR2wz8"
 CHAT_ID_TUJUAN="431283315"
 
 # Ganti 'LOKASI_FILE_ANDA/dokumen.pdf' dengan lokasi dan nama file dokumen yang ingin Anda kirim
-FILE_PATH="/var/lib/vnstat/vnstat.db"
+FILE_PATH="/var/lib/marzban/db.sqlite3"
 
-CAPTION="*Backup Database Vnstat RavaVPN*  /var/lib/vnstat/vnstat.db"
+CAPTION="*Backup Database Marzban Server RavaVPN*"
 
 # Menggunakan multipart/form-data untuk mengirim file
 curl -F document=@"$FILE_PATH" -F caption="$CAPTION" -F parse_mode="Markdown" "https://api.telegram.org/bot$TOKEN/sendDocument" -F chat_id="$CHAT_ID_TUJUAN"
