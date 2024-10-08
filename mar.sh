@@ -289,10 +289,15 @@ rm /var/lib/vnstat/vnstat.db
 wget -O /var/lib/vnstat/vnstat.db "https://github.com/ravatz/MarLingV2/raw/main/vnstat.db"
 
 #install WARP Proxy
-# wget -O /root/warp "https://raw.githubusercontent.com/hamid-gh98/x-ui-scripts/main/install_warp_proxy.sh"
-# sudo chmod +x /root/warp
-# sudo bash /root/warp -y 
-
+echo -e "Install Warp? (y/n)?"
+read answers
+if [ "$answers" == "${answers#[Yy]}" ] ;then
+exit 0
+else
+wget -O /root/warp "https://raw.githubusercontent.com/hamid-gh98/x-ui-scripts/main/install_warp_proxy.sh"
+sudo chmod +x /root/warp
+sudo bash /root/warp -y 
+fi
 #finishing
 apt autoremove -y
 apt clean
